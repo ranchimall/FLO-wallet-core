@@ -77,7 +77,7 @@ Upgrades
 --------
 For the pre-compiled executable version of FLO, check **bin/** directory
 
-####Added 2 features to the FLO wallet :
+### Added 2 features to the FLO wallet :
 1. CoinControlFIFO - selects the coins that were received first to be spent first (First-In-First-Out).
 To enable it: add **CoinControlFIFO=1** in flo.conf (or) pass **-CoinControlFIFO** as cmdline arg 
 
@@ -85,13 +85,16 @@ To enable it: add **CoinControlFIFO=1** in flo.conf (or) pass **-CoinControlFIFO
 2. SendChangeToBack - send the change back to the coin's original address
 To enable it, add **SendChangeToBack=1** in flo.conf (or) pass **-SendChangeToBack** as cmdline arg
 
-####Added Multi-Wallet support for Linux :
+### Added Multi-Wallet support for Linux :
 Multi-wallet support allows the user to run more than 1 wallet simultaneously.
 The Multi-wallet executable file is located in **bin/Linux**
 To access multi-wallet run :
+
 	./multiWallet -create [walletName]
 	./multiWallet <walletName> <command> [option]
+
 For more details run :
+
 	./multiWallet -help
 
 
