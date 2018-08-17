@@ -73,5 +73,28 @@ Translations are periodically pulled from Transifex and merged into the git repo
 **Important**: We do not accept translation changes as GitHub pull requests because the next
 pull from Transifex would automatically overwrite them again.
 
-For the pre-compiled binary version of FLO, check bin/
+Upgrades
+--------
+For the pre-compiled executable version of FLO, check **bin/** directory
+
+####Added 2 features to the FLO wallet :
+1. CoinControlFIFO - selects the coins that were received first to be spent first (First-In-First-Out).
+To enable it: add **CoinControlFIFO=1** in flo.conf (or) pass **-CoinControlFIFO** as cmdline arg 
+
+
+2. SendChangeToBack - send the change back to the coin's original address
+To enable it, add **SendChangeToBack=1** in flo.conf (or) pass **-SendChangeToBack** as cmdline arg
+
+####Added Multi-Wallet support for Linux :
+Multi-wallet support allows the user to run more than 1 wallet simultaneously.
+The Multi-wallet executable file is located in **bin/Linux**
+To access multi-wallet run :
+	./multiWallet -create [walletName]
+	./multiWallet <walletName> <command> [option]
+For more details run :
+	./multiWallet -help
+
+
+
+
 

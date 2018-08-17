@@ -18,6 +18,6 @@ commands:
 	flod		-	run FLO daemon
 
 for more info on each commands use option -help (or) -?
-./flo-qt -?
-./flo-cli -?
-./flod -?
+	./flo-qt -?
+	./flo-cli -?
+	./flod -?
