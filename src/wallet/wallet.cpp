@@ -2851,8 +2851,8 @@ bool CWallet::CreateTransaction(const std::vector<CRecipient>& vecSend, CWalletT
                     }
                     txNew.vout.push_back(txout);
                 }
-
-                CTxDestination destChange;                
+                
+                CTxDestination destChange;
                 // Choose coins to use
                 if (pick_new_inputs) {
                     nValueIn = 0;
@@ -2862,13 +2862,14 @@ bool CWallet::CreateTransaction(const std::vector<CRecipient>& vecSend, CWalletT
                         strFailReason = _("Insufficient funds");
                         return false;
                     }
+                    // Send Change Back to Same (sending) Address
+                    if(!coinControlDestChange && gArgs.GetBoolArg("-SendChangeToBack", false)){
+                        scriptChange = GetScriptForDestination(destChange);
+                        change_prototype_txout = CTxOut(0, scriptChange);
+                        change_prototype_size = GetSerializeSize(change_prototype_txout, SER_DISK, 0);
+                    }
                 }
-                // Send Change Back to Same (sending) Address
-                if(!coinControlDestChange && gArgs.GetBoolArg("-SendChangeToBack", false)){
-                    scriptChange = GetScriptForDestination(destChange);
-                    CTxOut change_prototype_txout(0, scriptChange);
-                    size_t change_prototype_size = GetSerializeSize(change_prototype_txout, SER_DISK, 0);
-                }
+                
 
                 const CAmount nChange = nValueIn - nValueToSelect;
 
