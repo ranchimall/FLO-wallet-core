@@ -86,11 +86,10 @@ flo-tx	-	FLO transactions
 2. Extract the files
 3. To run the executable files use the following commands according to the use:
 
-	`cd depends/
 	./flo-qt
 	./flo-cli
 	./flod
-	./flo-tx`
+	./flo-tx
 	
 4. For more details view the readme file in the extracted directory
 
