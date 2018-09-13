@@ -73,9 +73,62 @@ Translations are periodically pulled from Transifex and merged into the git repo
 **Important**: We do not accept translation changes as GitHub pull requests because the next
 pull from Transifex would automatically overwrite them again.
 
+Usage
+--------
+
+flo-qt	-	FLO Core Wallet (Qt)
+flo-cli	-	FLO command line execution
+flod	-	FLO daemon
+flo-tx	-	FLO transactions
+
+### For Pre-compiled executable version of FLO :
+1. Download the compressed file for respective OS in **bin/** directory.
+2. Extract the files
+3. To run the executable files use the following commands according to the use:
+
+	`cd depends/
+	./flo-qt
+	./flo-cli
+	./flod
+	./flo-tx`
+	
+4. For more details view the readme file in the extracted directory
+
+### For creating Pre-compiled executable binary files from source code :
+The dependencies for creating pre-compiled binaries are present in **depends/** directory.
+
+	cd depends/
+
+To build dependencies for the current arch/OS:
+
+	make
+
+To build for another arch/OS:
+
+	make HOST=<host-platform-triplet>
+	
+A prefix will be generated that's suitable for plugging into FLO's configure.
+To build FLO binaries :
+	
+	cd ..
+	./autogen.sh
+	./configure --prefix=`pwd`/depends/<host-platform-triplet>
+	make
+
+Common `<host-platform-triplets>` for cross compilation are:
+
+- `i686-w64-mingw32` for Win32
+- `x86_64-w64-mingw32` for Win64
+- `x86_64-apple-darwin11` for MacOSX
+- `arm-linux-gnueabihf` for Linux ARM 32 bit
+- `aarch64-linux-gnu` for Linux ARM 64 bit
+- `x86_64-linux-gnu` for Linux-based OS 64-bit
+- `x86_64-pc-linux-gnu` for Linux-based PC OS 64-bit
+
+for more details on creating binaries: https://github.com/ranchimall/FLO-wallet-core/blob/flo-master/depends/README.md
+
 Upgrades
 --------
-For the pre-compiled executable version of FLO, check **bin/** directory
 
 ### Added 2 features to the FLO wallet :
 1. CoinControlFIFO - selects the coins that were received first to be spent first (First-In-First-Out).
