@@ -59,13 +59,13 @@ static const CAmount HIGH_TX_FEE_PER_KB = 0.01 * COIN;
 //! -maxtxfee will warn if called with a higher fee than this amount (in satoshis)
 static const CAmount HIGH_MAX_TX_FEE = 100 * HIGH_TX_FEE_PER_KB;
 /** Default for -limitancestorcount, max number of in-mempool ancestors */
-static const unsigned int DEFAULT_ANCESTOR_LIMIT = 25;
+static const unsigned int DEFAULT_ANCESTOR_LIMIT = 1250;
 /** Default for -limitancestorsize, maximum kilobytes of tx + all in-mempool ancestors */
-static const unsigned int DEFAULT_ANCESTOR_SIZE_LIMIT = 101;
+static const unsigned int DEFAULT_ANCESTOR_SIZE_LIMIT = 1750;
 /** Default for -limitdescendantcount, max number of in-mempool descendants */
-static const unsigned int DEFAULT_DESCENDANT_LIMIT = 25;
+static const unsigned int DEFAULT_DESCENDANT_LIMIT = 1250;
 /** Default for -limitdescendantsize, maximum kilobytes of in-mempool descendants */
-static const unsigned int DEFAULT_DESCENDANT_SIZE_LIMIT = 101;
+static const unsigned int DEFAULT_DESCENDANT_SIZE_LIMIT = 1750;
 /** Default for -mempoolexpiry, expiration time for mempool transactions in hours */
 static const unsigned int DEFAULT_MEMPOOL_EXPIRY = 336;
 /** Maximum kilobytes for transactions to store for processing during reorg */
@@ -273,7 +273,7 @@ bool IsInitialBlockDownload();
 /** Retrieve a transaction (from memory pool, or from disk, if possible) */
 bool GetTransaction(const uint256 &hash, CTransactionRef &tx, const Consensus::Params& params, uint256 &hashBlock, bool fAllowSlow = false);
 /** Find the best known block, and make it the tip of the block chain */
-bool ActivateBestChain(CValidationState& state, const CChainParams& chainparams, std::shared_ptr<const CBlock> pblock = std::shared_ptr<const CBlock>());
+bool ActivateBestChain(CValidationState& state, const CChainParams& chainparams, std::shared_ptr<const CBlock> pblock = std::shared_ptr<const CBlock>(), bool reconsider=false);
 CAmount GetBlockSubsidy(int nHeight, const Consensus::Params& consensusParams);
 
 /** Guess verification progress (as a fraction between 0.0=genesis and 1.0=current tip). */
