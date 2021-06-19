@@ -203,7 +203,9 @@ public:
                         //   (the tx=... number in the SetBestChain debug.log lines)
         	0.03  // * estimated number of transactions per second after that timestamp
         };
-
+        // Max-Reorg (51% attack prevention)
+        nMaxReorganizationDepth = 55; // 55 at 1 minute block timespan is +/- 55 minutes.
+        nMinReorganizationPeers = 3;
     }
 };
 
@@ -411,7 +413,7 @@ public:
 
         fDefaultConsistencyChecks = true;
         fRequireStandard = false;
-        fMineBlocksOnDemand = true; 
+        fMineBlocksOnDemand = true;
 
 //        checkpointData = (CCheckpointData) {
 //            {
