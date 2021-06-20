@@ -142,7 +142,8 @@ To enable it, add **SendChangeToBack=1** in flo.conf (or) pass **-SendChangeToBa
 
 ### Added Multi-Wallet support for Linux :
 Multi-wallet support allows the user to run more than 1 wallet simultaneously.
-The Multi-wallet executable file is located in **bin/Linux**
+The Multi-wallet executable file is located in **tmp/**
+Copy the executable(binary) file to the flo binary files
 To access multi-wallet run :
 
 	./multiWallet -create [walletName]
